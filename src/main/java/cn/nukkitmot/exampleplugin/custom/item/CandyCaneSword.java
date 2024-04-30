@@ -8,11 +8,10 @@ import cn.nukkit.item.customitem.data.RenderOffsets;
 public class CandyCaneSword extends ItemCustom {
     private static String spacenameId = "nukkit:candy_cane_sword";
     private static String textureName = "candy_cane_sword";
-    public static String name = "糖果剑";
+    public static String name = null;
 
-    @Override
-    public int getMaxStackSize() {
-        return 1;
+    public CandyCaneSword() {
+        super(spacenameId, name, textureName);
     }
 
     public int scaleOffset() {
@@ -32,12 +31,23 @@ public class CandyCaneSword extends ItemCustom {
                 .build();
     }
 
-    public CandyCaneSword() {
-        super(spacenameId, name, textureName);
-    }
-
     @Override
     public int getMaxDurability() {
         return 500;
+    }
+
+    @Override
+    public int getMaxStackSize() {
+        return 1;
+    }
+
+    @Override
+    public int getAttackDamage() {
+        return 4;
+    }
+
+    @Override
+    public boolean isSword() {
+        return true;
     }
 }
