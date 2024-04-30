@@ -3,12 +3,13 @@ package cn.nukkitmot.exampleplugin.custom.item;
 import cn.nukkit.item.customitem.CustomItemDefinition;
 import cn.nukkit.item.customitem.ItemCustom;
 import cn.nukkit.item.customitem.data.ItemCreativeCategory;
+import cn.nukkit.item.customitem.data.ItemCreativeGroup;
 import cn.nukkit.item.customitem.data.RenderOffsets;
 
 public class CandyCaneSword extends ItemCustom {
     private static String spacenameId = "nukkit:candy_cane_sword";
     private static String textureName = "candy_cane_sword";
-    public static String name = null;
+    private static String name = null;
 
     public CandyCaneSword() {
         super(spacenameId, name, textureName);
@@ -25,8 +26,9 @@ public class CandyCaneSword extends ItemCustom {
     public CustomItemDefinition getDefinition() {
         return CustomItemDefinition
                 .simpleBuilder(this, ItemCreativeCategory.EQUIPMENT)
-                .creativeGroup("itemGroup.name.item")
-                .allowOffHand(false)
+                .creativeGroup(ItemCreativeGroup.SWORD)
+                .allowOffHand(true)
+                .handEquipped(true)
                 .renderOffsets(RenderOffsets.scaleOffset(scaleOffset()))
                 .build();
     }
