@@ -1,6 +1,8 @@
 package cn.nukkitmot.exampleplugin;
 
 import cn.nukkit.Server;
+import cn.nukkit.item.Item;
+import cn.nukkit.item.customitem.ItemCustom;
 import cn.nukkit.lang.LangCode;
 import cn.nukkit.lang.PluginI18n;
 import cn.nukkit.lang.PluginI18nManager;
@@ -8,10 +10,12 @@ import cn.nukkit.plugin.PluginBase;
 import cn.nukkit.utils.Config;
 import cn.nukkit.utils.ConfigSection;
 import cn.nukkit.utils.TextFormat;
+import cn.nukkitmot.exampleplugin.custom.item.CandyCaneSword;
 import lombok.Getter;
 
 import java.io.File;
 import java.util.LinkedHashMap;
+import java.util.List;
 
 /**
  * author: MagicDroidX
@@ -35,6 +39,9 @@ public class ExamplePlugin extends PluginBase {
         initServerLangCode();
         //register the command of plugin
         this.getServer().getCommandMap().register("exampleplugin", new ExampleCommand());
+
+        //register the custom item of server
+        registerItems();
 
         this.getLogger().info(TextFormat.WHITE + "I've been loaded!");
     }
@@ -78,6 +85,15 @@ public class ExamplePlugin extends PluginBase {
     @Override
     public void onDisable() {
         this.getLogger().info(TextFormat.DARK_RED + "I've been disabled!");
+    }
+
+    private void registerItems() {
+        List<Class<? extends ItemCustom>> list = List.of(
+                CandyCaneSword.class
+        );
+        for (Class<? extends ItemCustom> item : list) {
+            Item.registerCustomItem(item);
+        }
     }
 
     public void initServerLangCode() {
