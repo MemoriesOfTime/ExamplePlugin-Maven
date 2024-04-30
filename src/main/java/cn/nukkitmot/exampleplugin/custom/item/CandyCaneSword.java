@@ -6,7 +6,8 @@ import cn.nukkit.item.customitem.data.ItemCreativeCategory;
 import cn.nukkit.item.customitem.data.RenderOffsets;
 
 public class CandyCaneSword extends ItemCustom {
-    private static String stringId = "candy_cane_sword";
+    private static String spacenameId = "nukkit:candy_cane_sword";
+    private static String textureName = "candy_cane_sword";
     public static String name = "糖果剑";
 
     @Override
@@ -32,7 +33,7 @@ public class CandyCaneSword extends ItemCustom {
     }
 
     public CandyCaneSword() {
-        super(stringId, name);
+        super(spacenameId, name, textureName);
     }
 
     @Override
