@@ -3,6 +3,7 @@ package cn.nukkitmot.exampleplugin;
 import cn.nukkit.Server;
 import cn.nukkit.item.Item;
 import cn.nukkit.item.customitem.ItemCustom;
+import cn.nukkit.item.enchantment.Enchantment;
 import cn.nukkit.lang.LangCode;
 import cn.nukkit.lang.PluginI18n;
 import cn.nukkit.lang.PluginI18nManager;
@@ -10,6 +11,7 @@ import cn.nukkit.plugin.PluginBase;
 import cn.nukkit.utils.Config;
 import cn.nukkit.utils.ConfigSection;
 import cn.nukkit.utils.TextFormat;
+import cn.nukkitmot.exampleplugin.custom.enchantment.AutoRemeltedEnchatment;
 import cn.nukkitmot.exampleplugin.custom.item.CandyCaneSword;
 import lombok.Getter;
 
@@ -42,6 +44,7 @@ public class ExamplePlugin extends PluginBase {
 
         //register the custom item of server
         registerItems();
+        Enchantment.register(new AutoRemeltedEnchatment(), true);
 
         this.getLogger().info(TextFormat.WHITE + "I've been loaded!");
     }

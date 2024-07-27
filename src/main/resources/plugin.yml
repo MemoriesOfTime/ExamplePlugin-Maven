@@ -22,8 +22,8 @@ loadbefore: ["ImportantPlugin"]
 commands:
   example:
     description: Example command
-    usage: "/example"
-    aliases: ["xample", "nukkitexample"]
+    usage: "/examplecommand"
+    aliases: ["example", "nukkitexample"]
     permission: exampleplugin.command.example
     permission-message: "You do not have the required permission to run /example"
 permissions:

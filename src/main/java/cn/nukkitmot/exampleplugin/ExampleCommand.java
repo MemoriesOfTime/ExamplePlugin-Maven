@@ -7,8 +7,11 @@ import cn.nukkit.command.PluginCommand;
 import cn.nukkit.command.data.CommandEnum;
 import cn.nukkit.command.data.CommandParamType;
 import cn.nukkit.command.data.CommandParameter;
+import cn.nukkit.item.Item;
+import cn.nukkit.item.enchantment.Enchantment;
 import cn.nukkit.lang.LangCode;
 import cn.nukkit.lang.PluginI18n;
+import cn.nukkit.utils.Identifier;
 import cn.nukkit.utils.TextFormat;
 
 public class ExampleCommand extends PluginCommand<ExamplePlugin> {
@@ -25,7 +28,7 @@ public class ExampleCommand extends PluginCommand<ExamplePlugin> {
         */
         super("examplecommand", ExamplePlugin.getInstance());
 
-        this.setDescription("exampleplugin.examplecommand.description");
+        this.setDescription("%exampleplugin.examplecommand.description");
         //Set the alias for this command
         this.setAliases(new String[]{"test"});
 
@@ -72,6 +75,12 @@ public class ExampleCommand extends PluginCommand<ExamplePlugin> {
         switch (args[0]) {
             case "say1", "sayone" -> {
                 api.getLogger().info("execute say1");
+                if (sender instanceof Player player) {
+                    Item pickaxe = Item.fromString("minecraft:stone_pickaxe");
+                    Enchantment enchantment = Enchantment.getEnchantment(new Identifier("nukkit", "auto_remelted")).setLevel(2);
+                    pickaxe.addEnchantment(enchantment);
+                    player.getInventory().addItem(pickaxe);
+                }
             }
             case "say2" -> {
                 api.getLogger().info("execute say2");
