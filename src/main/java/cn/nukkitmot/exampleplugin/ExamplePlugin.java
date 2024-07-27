@@ -1,6 +1,7 @@
 package cn.nukkitmot.exampleplugin;
 
 import cn.nukkit.Server;
+import cn.nukkit.entity.custom.EntityManager;
 import cn.nukkit.item.Item;
 import cn.nukkit.item.customitem.ItemCustom;
 import cn.nukkit.item.enchantment.Enchantment;
@@ -12,6 +13,7 @@ import cn.nukkit.utils.Config;
 import cn.nukkit.utils.ConfigSection;
 import cn.nukkit.utils.TextFormat;
 import cn.nukkitmot.exampleplugin.custom.enchantment.AutoRemeltedEnchatment;
+import cn.nukkitmot.exampleplugin.custom.entity.MarkerEntity;
 import cn.nukkitmot.exampleplugin.custom.item.CandyCaneSword;
 import lombok.Getter;
 
@@ -44,6 +46,8 @@ public class ExamplePlugin extends PluginBase {
 
         //register the custom item of server
         registerItems();
+        //register the custom entity of server
+        registerEntities();
         Enchantment.register(new AutoRemeltedEnchatment(), true);
 
         this.getLogger().info(TextFormat.WHITE + "I've been loaded!");
@@ -97,6 +101,10 @@ public class ExamplePlugin extends PluginBase {
         for (Class<? extends ItemCustom> item : list) {
             Item.registerCustomItem(item);
         }
+    }
+
+    private void registerEntities() {
+        EntityManager.get().registerDefinition(MarkerEntity.DEF);
     }
 
     public void initServerLangCode() {
